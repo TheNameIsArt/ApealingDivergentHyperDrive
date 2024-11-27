@@ -12,12 +12,12 @@ public class LogicScript : MonoBehaviour {
     public int score;
     public bool gameIsOver = false;
     public PlayerMovement movement;
-    public GameObject gameOverScreen;
     public GameObject spawner;
     public SpawnerScript spawnerScript;
-    public float gameSpeed = 1.0f;
+    
     public GameObject player;
     public PlayerInput playerInput;
+    public SceneRandomizer SceneRandomizer; // Script with the scene randomizer when winning
 
     // Use this for initialization
     void Start () {
@@ -28,6 +28,7 @@ public class LogicScript : MonoBehaviour {
         spawnerScript = spawner.GetComponent<SpawnerScript>();
         player = GameObject.Find("Hooman");
         playerInput = player.GetComponent<PlayerInput>();
+        SceneRandomizer = GameObject.Find("DontDestroyOnLoad").GetComponent<SceneRandomizer>();
     }
 
 
@@ -37,7 +38,12 @@ public class LogicScript : MonoBehaviour {
         MyText.text = "Score: " + score;
         //Debug.Log("update work");
         
-        Time.timeScale = gameSpeed;
+        
+        if (gameIsOver)
+        {
+            gameIsOver = false;
+            gameOver();
+        }
     }
 
 
@@ -49,7 +55,7 @@ public class LogicScript : MonoBehaviour {
     }
     public void gameOver()
     {
-        gameOverScreen.SetActive(true);
+        //SceneRandomizer.gameOver();
         gameIsOver = true;
         playerInput.enabled = false;
     }
@@ -63,6 +69,7 @@ public class LogicScript : MonoBehaviour {
         if (gameIsOver == false)
         {
             Debug.Log("You Win!");
+            SceneRandomizer.Win = true;
 
         }
     }

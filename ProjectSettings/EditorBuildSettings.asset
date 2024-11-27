@@ -8,4 +8,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Alone at the disco.unity
+    guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/Catwalk simulation.unity
+    guid: e7dec647e81affd4cbabce4202002fb8
+  - enabled: 1
+    path: Assets/Scenes/Fashion Gun.unity
+    guid: beab6df4ac9af2f45856cda7663bb131
+  - enabled: 1
+    path: Assets/Scenes/PickUpThePhone.unity
+    guid: 26b41045ebc3a5f45b61f55fd9528d11
   m_configObjects: {}
