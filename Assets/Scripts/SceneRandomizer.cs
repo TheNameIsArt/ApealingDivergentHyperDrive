@@ -30,7 +30,7 @@ public class SceneRandomizer : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        sceneNames = new string[] { "Alone at the Disco", "Catwalk simulation", "Fashion Gun", "PickUpThePhone", "Bar simulator", "Dance Match", "DatingSim", "GetToTheDate", "Pick Outfit", "2dplatformerBane2", "FallingGame", "Stay in spotlight" };
+        sceneNames = new string[] { "Alone at the Disco", "Catwalk simulation", "Fashion Gun", "PickUpThePhone", "Bar simulator", "Dance Match", "DatingSim", "GetToTheDate", "Pick Outfit", "2DPFB3", "FallingGame", "Stay in spotlight", "2DPFB4", "Hack & Slash", "Lawyer JRPG" };
         Instance = this;
         DontDestroyOnLoad(this);
         PointsToSpeedChange = PointsRequired;

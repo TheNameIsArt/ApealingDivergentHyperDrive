@@ -47,4 +47,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Stay in spotlight.unity
     guid: 02e590bb12cb35241b362570a63fa397
+  - enabled: 1
+    path: Assets/Scenes/2DPFB4.unity
+    guid: eed4deaec4884ed468a2d4523c50602a
+  - enabled: 1
+    path: Assets/Scenes/Hack & Slash.unity
+    guid: 6473199a4b3d1b14283c65bc7bbf68a0
+  - enabled: 1
+    path: Assets/Scenes/Lawyer JRPG.unity
+    guid: 7a476b648125f5542aee9cd6b53536a3
   m_configObjects: {}

@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public Sprite successSprite; // Sprite to show on correct answer
     public Sprite failureSprite; // Sprite to show on wrong answer
     private SceneRandomizer SceneRandomizer;
+    private UniversalTimerScript timer;
 
     private Sprite targetSprite; // The currently displayed target sprite
     private bool gameEnded = false; // To prevent further clicks after game ends
@@ -16,6 +17,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         SceneRandomizer = GameObject.Find("DontDestroyOnLoad").GetComponent<SceneRandomizer>();
+        timer = GameObject.Find("Timer").GetComponent<UniversalTimerScript>();
         AssignSpritesToButtons();
         PickRandomSprite();
     }
@@ -49,6 +51,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Correct!");
             speechBubble.sprite = successSprite; // Show success sprite
+            timer.timerStopper = true;
             Invoke("Win", 1f);
         }
         else

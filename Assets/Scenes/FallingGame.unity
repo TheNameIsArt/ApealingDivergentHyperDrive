@@ -1228,7 +1228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2952a63305a988947afe47ae053bfb20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 20
+  moveSpeed: 10
 --- !u!114 &1244068912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1418,7 +1418,7 @@ MonoBehaviour:
   obstaclePrefab: {fileID: 4286036468828708651, guid: e3ad4e4b4ff6db341bcd0f2660514d98, type: 3}
   spawnInterval: 0.8
   spawnHeight: -10
-  spawnWidth: 5
+  spawnWidth: 7.1
   obstacleSpeed: 7
 --- !u!1001 &5294249509658205621
 PrefabInstance:

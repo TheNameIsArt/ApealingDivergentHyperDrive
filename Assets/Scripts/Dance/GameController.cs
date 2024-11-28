@@ -15,6 +15,8 @@ public class GameController : MonoBehaviour
     private List<string> playerSequence = new List<string>(); // Store player's input sequence
     private bool playerTurn = false; // Flag to check if it's the player's turn to input
     private bool isSequenceComplete = false; // Flag to check if the sequence is complete
+    private bool gameWin = false;
+
     public SceneRandomizer SceneRandomizer;
 
     // Start is called before the first frame update
@@ -108,7 +110,12 @@ public class GameController : MonoBehaviour
             {
                 Debug.Log("You win!");
                 TMP_Text.text = "Great Job! Smooth moves!";
-                Invoke("Win", 1f);
+                gameWin = true;
+                if (gameWin == true)
+                {
+                    gameWin = false;
+                    Invoke("Win", 1f);
+                }
             }
         }
     }
