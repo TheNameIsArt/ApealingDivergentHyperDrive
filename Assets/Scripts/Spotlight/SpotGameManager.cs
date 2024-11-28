@@ -7,7 +7,12 @@ public class SpotGameManager : MonoBehaviour
     public float winTime = 5f; // Time required to win
     private float timeInSpotlight = 0f; // Timer for staying in the spotlight
     private bool gameEnded = false; // To check if the game is over
+    SceneRandomizer SceneRandomizer;
 
+    private void Start()
+    {
+        SceneRandomizer = GameObject.Find("DontDestroyOnLoad").GetComponent<SceneRandomizer>();
+    }
     void Update()
     {
         if (gameEnded) return;
@@ -33,19 +38,15 @@ public class SpotGameManager : MonoBehaviour
     {
         gameEnded = true;
         Debug.Log("You Win!");
-        EndGame();
+        SceneRandomizer.Win = true;
     }
 
     void LoseGame()
     {
         gameEnded = true;
         Debug.Log("You Lose!");
-        EndGame();
+        SceneRandomizer.gameOver();
     }
 
-    void EndGame()
-    {
-        // Stop the game (reload the scene or display a message)
-        Time.timeScale = 0; // Pause the game
-    }
+    
 }

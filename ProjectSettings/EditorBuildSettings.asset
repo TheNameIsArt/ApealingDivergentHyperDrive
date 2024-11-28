@@ -35,4 +35,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Pick Outfit.unity
     guid: 217e98f0d72b4864dbcccd9a4a033ca7
+  - enabled: 1
+    path: Assets/Scenes/2dplatformerBane2.unity
+    guid: 636fa0bf081a0ac4b8dde3db1f89bb4a
+  - enabled: 1
+    path: Assets/Scenes/FallingGame.unity
+    guid: 99e77bf02d813704da8aa286ff89d438
+  - enabled: 1
+    path: Assets/Scenes/Stay in spotlight.unity
+    guid: 02e590bb12cb35241b362570a63fa397
   m_configObjects: {}

@@ -18,6 +18,7 @@ public class SceneRandomizer : MonoBehaviour
     private int Points;
     private int PointsRequired = 1;
     private int PointsToSpeedChange;
+    private GameObject ui; // Reference to the child GameObject named "UI"
 
     private void Awake()
     {
@@ -27,12 +28,19 @@ public class SceneRandomizer : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        sceneNames = new string[] { "Alone at the Disco", "Catwalk simulation", "Fashion Gun", "PickUpThePhone", "Bar simulator", "Dance Match", "DatingSim", "GetToTheDate", "Pick Outfit" };
+        sceneNames = new string[] { "Alone at the Disco", "Catwalk simulation", "Fashion Gun", "PickUpThePhone", "Bar simulator", "Dance Match", "DatingSim", "GetToTheDate", "Pick Outfit", "2dplatformerBane2", "FallingGame", "Stay in spotlight" };
         Instance = this;
         DontDestroyOnLoad(this);
         PointsToSpeedChange = PointsRequired;
-        
-        
+
+        // Find the child GameObject named "UI"
+        ui = transform.Find("UI")?.gameObject;
+
+        if (ui == null)
+        {
+            Debug.LogError("Child GameObject 'UI' not found!");
+        }
+
     }
 
     private void Update()
@@ -106,5 +114,18 @@ public class SceneRandomizer : MonoBehaviour
         gameSpeedFloat = gameSpeedFloat + 0.2f;
         PointsToSpeedChange = PointsRequired;
         return;
+    }
+    public void StartGame()
+    {
+        TurnOnUI();
+        PickRandomScene() ;
+    }
+    public void TurnOnUI()
+    {
+        if (ui != null)
+        {
+            ui.SetActive(true);
+            Debug.Log("UI has been turned on.");
+        }
     }
 }
