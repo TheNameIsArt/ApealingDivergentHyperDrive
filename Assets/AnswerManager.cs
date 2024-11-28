@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class AnswerManager : MonoBehaviour
 {
@@ -17,10 +18,14 @@ public class AnswerManager : MonoBehaviour
     public Button wrongButton8;
     public Button wrongButton9;
     public Button wrongButton10;
+    public SceneRandomizer SceneRandomizer;
+    public TMP_Text text;
 
     // Start is called before the first frame update
     void Start()
     {
+        SceneRandomizer = GameObject.Find("DontDestroyOnLoad").GetComponent<SceneRandomizer>();
+
         if (correctButton != null)
         {
             correctButton.onClick.AddListener(OnCorrectButtonClick);
@@ -71,16 +76,24 @@ public class AnswerManager : MonoBehaviour
     void OnCorrectButtonClick()
     {
         Debug.Log("Correct");
+        text.text = "You're too sweet!";
+        Invoke("Win", 1f);
     }
 
     void OnWrongButtonClick()
     {
         Debug.Log("Wrong!");
+        text.text = "F#ck you!";
+        Invoke("Lose", 1f);
     }
 
-    // Update is called once per frame
-    void Update()
+    
+    void Win()
     {
-        
+        SceneRandomizer.Win = true;
+    }
+    void Lose()
+    {
+        SceneRandomizer.gameOver();
     }
 }

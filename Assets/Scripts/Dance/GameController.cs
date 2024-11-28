@@ -2,21 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.UI;
+using TMPro;
 
 public class GameController : MonoBehaviour
 {
     // References to the player and AI
     public Animator playerAnimator;
     public Animator aiAnimator;
-
+    public TMP_Text TMP_Text;
     private List<string> aiSequence = new List<string>();   // Store AI's animation sequence
     private List<string> playerSequence = new List<string>(); // Store player's input sequence
     private bool playerTurn = false; // Flag to check if it's the player's turn to input
     private bool isSequenceComplete = false; // Flag to check if the sequence is complete
+    public SceneRandomizer SceneRandomizer;
 
     // Start is called before the first frame update
     void Start()
     {
+        SceneRandomizer = GameObject.Find("DontDestroyOnLoad").GetComponent<SceneRandomizer>();
         StartCoroutine(PlayAISequence()); // Start the AI sequence at the beginning
     }
 
@@ -88,7 +92,8 @@ public class GameController : MonoBehaviour
         if (playerMove != aiMove)
         {
             Debug.Log("Incorrect input, you lose!");
-            StopGame(); // Stop the game
+            TMP_Text.text = "Sorry man, Wrong moves!";
+            Invoke("Lose", 2f);
         }
         else
         {
@@ -98,16 +103,25 @@ public class GameController : MonoBehaviour
             if (playerSequence.Count == aiSequence.Count)
             {
                 Debug.Log("You win!");
-                StopGame(); // Stop the game
+                TMP_Text.text = "Great Job! Smooth moves!";
+                Invoke("Win", 1f);
             }
         }
     }
 
     // Stop the game (disable further input and sequence)
-    private void StopGame()
+    private void Win()
     {
         playerTurn = false; // Disable player input
         aiAnimator.enabled = false; // Optionally, disable AI animator
         playerAnimator.enabled = false; // Optionally, disable player animator
+        SceneRandomizer.Win = true;
+    }
+    private void Lose()
+    {
+        playerTurn = false; // Disable player input
+        aiAnimator.enabled = false; // Optionally, disable AI animator
+        playerAnimator.enabled = false; // Optionally, disable player animator
+        SceneRandomizer.gameOver();
     }
 }

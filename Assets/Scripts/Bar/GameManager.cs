@@ -8,12 +8,14 @@ public class GameManager : MonoBehaviour
     public Sprite[] sprites; // The 6 sprites (game sprites)
     public Sprite successSprite; // Sprite to show on correct answer
     public Sprite failureSprite; // Sprite to show on wrong answer
+    private SceneRandomizer SceneRandomizer;
 
     private Sprite targetSprite; // The currently displayed target sprite
     private bool gameEnded = false; // To prevent further clicks after game ends
 
     void Start()
     {
+        SceneRandomizer = GameObject.Find("DontDestroyOnLoad").GetComponent<SceneRandomizer>();
         AssignSpritesToButtons();
         PickRandomSprite();
     }
@@ -47,11 +49,13 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Correct!");
             speechBubble.sprite = successSprite; // Show success sprite
+            Invoke("Win", 1f);
         }
         else
         {
             Debug.Log("Wrong!");
             speechBubble.sprite = failureSprite; // Show failure sprite
+            Invoke("Lose", 1f);
         }
 
         DisableAllButtons(); // Prevent further clicks
@@ -63,5 +67,13 @@ public class GameManager : MonoBehaviour
         {
             button.interactable = false;
         }
+    }
+    void Win()
+    {
+        SceneRandomizer.Win = true;
+    }
+    void Lose()
+    {
+        SceneRandomizer.gameOver();
     }
 }

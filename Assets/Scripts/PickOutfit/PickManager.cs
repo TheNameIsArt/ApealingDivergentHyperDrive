@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 public class PickManager : MonoBehaviour
 {
@@ -6,10 +7,14 @@ public class PickManager : MonoBehaviour
     public SpriteRenderer shirtSlot; // SpriteRenderer for the top
     public SpriteRenderer skirtSlot; // SpriteRenderer for the bottom
     public SpriteRenderer shoesSlot; // SpriteRenderer for the shoes
-
+    private SceneRandomizer SceneRandomizer;
     private int currentBox = 0;
     private bool gameEnded = false;
-
+    public TMP_Text text;
+    private void Start()
+    {
+        SceneRandomizer = GameObject.Find("DontDestroyOnLoad").GetComponent<SceneRandomizer>();
+    }
     void Update()
     {
         if (!gameEnded && Input.GetKeyDown(KeyCode.Space))
@@ -41,12 +46,24 @@ public class PickManager : MonoBehaviour
         if (index1 == index2 && index2 == index3)
         {
             Debug.Log("You win!");
+            text.text = "Wow! Great fit!";
+            Invoke("Win", 2f);
         }
         else
         {
             Debug.Log("No match!");
+            text.text = "Absolutely NOT!";
+            Invoke("Lose", 1f);
         }
 
         gameEnded = true;
+    }
+    void Win()
+    {
+        SceneRandomizer.Win = true;
+    }
+    void Lose()
+    {
+        SceneRandomizer.gameOver();
     }
 }

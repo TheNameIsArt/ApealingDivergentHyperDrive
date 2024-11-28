@@ -27,7 +27,7 @@ public class SceneRandomizer : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        sceneNames = new string[] { "Alone at the Disco", "Catwalk simulation", "Fashion Gun", "PickUpThePhone" };
+        sceneNames = new string[] { "Alone at the Disco", "Catwalk simulation", "Fashion Gun", "PickUpThePhone", "Bar simulator", "Dance Match", "DatingSim", "GetToTheDate", "Pick Outfit" };
         Instance = this;
         DontDestroyOnLoad(this);
         PointsToSpeedChange = PointsRequired;
