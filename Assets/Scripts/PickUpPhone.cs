@@ -10,7 +10,6 @@ public class PickUpPhone : MonoBehaviour
     public Button cueButton;          // Visual cue
     public AudioSource phoneRing;     // Audio for button appearance
     public AudioSource spacebarAudio; // Audio for spacebar press
-    public SceneRandomizer SceneRandomizer; // Script with the scene randomizer when winning
 
     private float targetTime;         // Randomized time to hit
     private bool gameActive = false;  // Controls game state
@@ -21,7 +20,6 @@ public class PickUpPhone : MonoBehaviour
 
     void Start()
     {
-        SceneRandomizer = GameObject.Find("DontDestroyOnLoad").GetComponent<SceneRandomizer>();
         cueButton.gameObject.SetActive(false); // Hides the button at the start
         StartGame();
     }
@@ -32,14 +30,6 @@ public class PickUpPhone : MonoBehaviour
         {
             timer += Time.deltaTime;
 
-            if (gameActive && !buttonVisible)
-            {
-                if (Input.GetKeyDown(KeyCode.Space))
-                {
-                    Debug.Log("Pressed too early");
-                    HandleSpacebarPressFail();
-                }
-            }
             // Show the button when the target time is reached
             if (timer >= targetTime && !buttonVisible)
             {
@@ -47,7 +37,7 @@ public class PickUpPhone : MonoBehaviour
             }
 
             // Check lose condition if the button is visible
-            if (buttonVisible && Time.time - buttonAppearTime >= 2f)
+            if (buttonVisible && Time.time - buttonAppearTime >= 5f)
             {
                 HandleLoseCondition();
             }
@@ -57,9 +47,7 @@ public class PickUpPhone : MonoBehaviour
             {
                 HandleSpacebarPress();
             }
-           
         }
-        
     }
 
     void ShowButton()
@@ -87,16 +75,8 @@ public class PickUpPhone : MonoBehaviour
             phoneRing.Stop();                  // Stop the ringing sound
         }
 
-        PlayAudio();                 // Play the spacebar press sound
+        spacebarAudio.Play();                  // Play the spacebar press sound
         resultText.text = "Good job!";
-        
-    }
-    void HandleSpacebarPressFail()
-    {
-        gameActive = false;
-        resultText.text = "It hasn't rung yet...";
-        Invoke("GameFail", 2f);
-
     }
 
     void HandleLoseCondition()
@@ -110,7 +90,6 @@ public class PickUpPhone : MonoBehaviour
         {
             phoneRing.Stop();                  // Stop the ringing sound
         }
-        Invoke("GameFail", 2f);
     }
 
     void StartGame()
@@ -122,26 +101,5 @@ public class PickUpPhone : MonoBehaviour
         phoneSoundPlayed = false;          // Allow sound to play again
         cueButton.gameObject.SetActive(false); // Hide the button
         resultText.text = "Pick up the phone when it rings!";
-    }
-    void PlayAudio()
-    {
-        spacebarAudio.Play();                  // Play the spacebar press sound
-        resultText.text = "Good job!";
-        StartCoroutine(WaitForAudioToEnd(spacebarAudio.clip.length));
-    }
-    private System.Collections.IEnumerator WaitForAudioToEnd(float duration)
-    {
-        yield return new WaitForSeconds(duration);
-        OnAudioFinished();
-    }
-    private void OnAudioFinished()
-    {
-        // Changes scenes after the audio finishes playing
-        Debug.Log("Audio finished playing. Triggering event...");
-        SceneRandomizer.Win = true ;
-    }
-    void GameFail()
-    {
-        SceneRandomizer.gameOver();
     }
 }
