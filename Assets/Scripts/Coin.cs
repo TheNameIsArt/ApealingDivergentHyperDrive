@@ -5,22 +5,15 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
-    SceneRandomizer SceneRandomizer;
-    private void Start()
-    {
-        SceneRandomizer = GameObject.Find("DontDestroyOnLoad").GetComponent<SceneRandomizer>();
-    }
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
             // Call the win method
-            
+            //ChristopherGameManager.Instance.WinGame();
             
             // Destroy the coin
             Destroy(gameObject);
-
-            SceneRandomizer.Win = true;
         }
     }
 }
