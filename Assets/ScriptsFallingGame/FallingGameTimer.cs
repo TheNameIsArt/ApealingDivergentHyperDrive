@@ -10,6 +10,7 @@ public class FallingGameTimerScript : MonoBehaviour
     public SceneRandomizer sceneRandomizer;
     public TMP_Text timerTxt;
     public bool timerStopper = false;
+    private bool Winner;
 
     // Start is called before the first frame update
     void Start()
@@ -29,11 +30,15 @@ public class FallingGameTimerScript : MonoBehaviour
             }
             else
             {
-                sceneRandomizer.Win = true;
+                Invoke("Win", 0.2f);
             }
             float roundedtime = (float)System.Math.Round(timer, 2);
             timerTxt.text = "Time left: " + roundedtime.ToString();
         }
 
+    }
+    void Win()
+    {
+        sceneRandomizer.Win = true; 
     }
 }

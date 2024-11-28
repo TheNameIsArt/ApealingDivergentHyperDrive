@@ -20,11 +20,12 @@ public class AnswerManager : MonoBehaviour
     public Button wrongButton10;
     public SceneRandomizer SceneRandomizer;
     public TMP_Text text;
-
+    public UniversalTimerScript timer;
     // Start is called before the first frame update
     void Start()
     {
         SceneRandomizer = GameObject.Find("DontDestroyOnLoad").GetComponent<SceneRandomizer>();
+        timer = GameObject.Find("Timer").GetComponent<UniversalTimerScript>();
 
         if (correctButton != null)
         {
@@ -77,6 +78,7 @@ public class AnswerManager : MonoBehaviour
     {
         Debug.Log("Correct");
         text.text = "You're too sweet!";
+        timer.timerStopper = true;
         Invoke("Win", 1f);
     }
 
@@ -84,6 +86,7 @@ public class AnswerManager : MonoBehaviour
     {
         Debug.Log("Wrong!");
         text.text = "F#ck you!";
+        timer.timerStopper = true;
         Invoke("Lose", 1f);
     }
 

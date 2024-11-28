@@ -21,9 +21,13 @@ public class GameController : MonoBehaviour
     void Start()
     {
         SceneRandomizer = GameObject.Find("DontDestroyOnLoad").GetComponent<SceneRandomizer>();
-        StartCoroutine(PlayAISequence()); // Start the AI sequence at the beginning
+        Invoke("playStart", 2f);
     }
 
+    void playStart()
+    {
+        StartCoroutine(PlayAISequence()); // Start the AI sequence at the beginning
+    }
     // Play the AI sequence (random Left/Right animations)
     private IEnumerator PlayAISequence()
     {

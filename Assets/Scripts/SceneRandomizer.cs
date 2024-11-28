@@ -19,6 +19,8 @@ public class SceneRandomizer : MonoBehaviour
     private int PointsRequired = 1;
     private int PointsToSpeedChange;
     private GameObject ui; // Reference to the child GameObject named "UI"
+    private GameObject Timer;
+    private UniversalTimerScript timerScript;
 
     private void Awake()
     {
@@ -32,6 +34,13 @@ public class SceneRandomizer : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(this);
         PointsToSpeedChange = PointsRequired;
+        if (GameObject.Find("Timer"))
+        {
+            Timer = GameObject.Find("Timer");
+            Debug.Log("Timer Found!");
+            timerScript = GameObject.Find("Timer").GetComponent<UniversalTimerScript>();
+            Debug.Log("TimerScript found!");
+        }
 
         // Find the child GameObject named "UI"
         ui = transform.Find("UI")?.gameObject;
@@ -53,7 +62,7 @@ public class SceneRandomizer : MonoBehaviour
             PointGet();
             isChangingScene = true; // Prevent re-triggering
             PickRandomScene(); // Call the method to pick a random scene
-            
+            TimerStopper();
         }
 
     }
@@ -93,6 +102,7 @@ public class SceneRandomizer : MonoBehaviour
         {
             gameIsOver = true;
             gameOverScreen.SetActive(true);
+            timerScript.timerStopper = true;
             Debug.Log("Game Over man!");
 
         }
@@ -132,5 +142,12 @@ public class SceneRandomizer : MonoBehaviour
         // Reset isChangingScene after the scene is loaded
         isChangingScene = false;
     }
-
+    void TimerStopper()
+    {
+        if (timerScript != null)
+        {
+            timerScript.timerStopper = true;
+        }
+        
+    }
 }

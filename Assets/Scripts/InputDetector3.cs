@@ -7,13 +7,17 @@ public class InputDetector3 : MonoBehaviour
 
     public bool IsVictoryAchieved;
     public int SpaceDetect = 0;
-
+    SceneRandomizer SceneRandomizer;
+    public UniversalTimerScript timer;
+    public GameObject VictoryText;
 
 
     // Start is called before the first frame update
     void Start()
     {
         GetComponent<SpriteRenderer>().enabled = false;
+        SceneRandomizer = GameObject.Find("DontDestroyOnLoad").GetComponent<SceneRandomizer>();
+        timer = GameObject.Find("Timer").GetComponent<UniversalTimerScript>();
     }
 
     // Update is called once per frame
@@ -61,6 +65,14 @@ public class InputDetector3 : MonoBehaviour
         { 
             Debug.Log("Victory!!!");
             GetComponent<SpriteRenderer>().enabled = true;
+            VictoryText.SetActive(true);
+            timer.timerStopper = true;
+            Invoke("Victory", 1f);
         }
+    }
+    void Victory()
+    {
+        SceneRandomizer.Win = true;
+        
     }
 }
