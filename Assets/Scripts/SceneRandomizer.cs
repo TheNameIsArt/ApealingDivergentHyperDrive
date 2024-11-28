@@ -73,9 +73,8 @@ public class SceneRandomizer : MonoBehaviour
 
         // Load the selected scene
         SceneManager.LoadScene(randomScene);
-
-        // Reset isChangingScene after the scene is loaded
-        isChangingScene = false;
+        Invoke("NoDoubleDip", 0.1f);
+        
         
     }
     public void PointGet()
@@ -128,4 +127,10 @@ public class SceneRandomizer : MonoBehaviour
             Debug.Log("UI has been turned on.");
         }
     }
+    void NoDoubleDip()
+    {
+        // Reset isChangingScene after the scene is loaded
+        isChangingScene = false;
+    }
+
 }

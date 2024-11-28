@@ -6,7 +6,7 @@ using Unity.VisualScripting;
 
 public class TimerScript : MonoBehaviour
 {
-    private float timer = 5;
+    private float timer = 10;
     private float totalTime = 0;
     public SceneRandomizer sceneRandomizer;
     public LogicScript LogicScript;

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class UniversalTimerScript : MonoBehaviour
 {
-    private float timer = 5;
+    public float timer = 5;
     private float totalTime = 0;
     public SceneRandomizer sceneRandomizer;
     public TMP_Text timerTxt;

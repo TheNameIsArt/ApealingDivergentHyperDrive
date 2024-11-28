@@ -749,7 +749,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1249308282}
-  - component: {fileID: 1249308281}
   - component: {fileID: 1249308283}
   m_Layer: 0
   m_Name: GameController
@@ -758,28 +757,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1249308281
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1249308280}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1651af6f72787a94cbd2a0a4fc50947c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  resultText: {fileID: 1243400610}
-  cueButton: {fileID: 1260169374}
-  phoneRing: {fileID: 307015327}
-  spacebarAudio: {fileID: 332896279}
-  targetTime: 0
-  gameActive: 0
-  timer: 0
-  phoneSoundPlayed: 0
-  buttonAppearTime: 0
-  buttonVisible: 0
 --- !u!4 &1249308282
 Transform:
   m_ObjectHideFlags: 0
@@ -1048,7 +1025,6 @@ GameObject:
   - component: {fileID: 1450532236}
   - component: {fileID: 1450532235}
   - component: {fileID: 1450532237}
-  - component: {fileID: 1450532238}
   - component: {fileID: 1450532239}
   m_Layer: 0
   m_Name: Phone_0
@@ -1145,20 +1121,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1450532238
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1450532234}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccfff11a3a83d1c47a073af704eab618, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PhoneAnimator: {fileID: 1450532237}
-  animationTriggered: 0
 --- !u!114 &1450532239
 MonoBehaviour:
   m_ObjectHideFlags: 0
