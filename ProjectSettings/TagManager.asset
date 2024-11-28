@@ -8,6 +8,7 @@ TagManager:
   - Spawner
   - Logic
   - Point
+  - Obstacle
   layers:
   - Default
   - TransparentFX
@@ -42,9 +43,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: background
+    uniqueID: 3994993017
+    locked: 0
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: New Layer 1
-    uniqueID: 3994993017
     locked: 0
