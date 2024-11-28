@@ -1,17 +1,20 @@
 using UnityEditor;
 using UnityEngine;
 
-public class RotateInCone : MonoBehaviour
+public class GunScript : MonoBehaviour
 {
     public float rotationSpeed = 90f; // Degrees per second
     public float maxAngle = 80f; // Maximum angle from the initial position (80 degrees on each side makes 160-degree cone)
     private float currentAngle = 0f; // Current angle of rotation
     private bool rotatingUp = true; // Direction of rotation
-    private bool isPaused = false; // Flag to pause rotation
+    public bool isPaused = false; // Flag to pause rotation
+    public SceneRandomizer SceneRandomizer; // Script with the scene randomizer when winning
+    public float waitTime;
 
     private Quaternion initialRotation; // The starting rotation
     private Animator animator; // Reference to the Animator component
     public GameObject laser;
+    public UniversalTimerScript timer;
     void Start()
     {
         // Store the initial rotation of the GameObject
@@ -19,8 +22,9 @@ public class RotateInCone : MonoBehaviour
 
         // Get the Animator component attached to the GameObject
         animator = GetComponent<Animator>();
-
-        laser = transform.GetChild(1).gameObject;
+        SceneRandomizer = GameObject.Find("DontDestroyOnLoad").GetComponent<SceneRandomizer>();
+        timer = GameObject.Find("Timer").GetComponent<UniversalTimerScript>();
+        
     }
 
     void Update()
@@ -35,6 +39,7 @@ public class RotateInCone : MonoBehaviour
             {
                 animator.SetTrigger("PlayAnimation");
                 laser.SetActive(true);
+                
             }
 
             return; // Stop further updates for this frame
@@ -69,5 +74,25 @@ public class RotateInCone : MonoBehaviour
 
         // Apply the rotation
         transform.rotation = initialRotation * Quaternion.Euler(0, 0, currentAngle);
+    }
+    public void EndGame()
+    {
+        timer.timerStopper = true;
+        Invoke("NextGame", waitTime);
+    }
+    private void NextGame()
+    {
+        SceneRandomizer.Win = true;
+    }
+
+    public GameObject GetLaser()
+    {
+        return laser;
+    }
+
+    public void Reload()
+    {
+        Debug.Log("Triggering reload");
+        isPaused = false;
     }
 }

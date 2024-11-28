@@ -5,7 +5,46 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: fb40911caa1cd5049960fa358b281c50
+  - enabled: 1
+    path: Assets/Scenes/Alone at the disco.unity
+    guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/Catwalk simulation.unity
+    guid: e7dec647e81affd4cbabce4202002fb8
+  - enabled: 1
+    path: Assets/Scenes/Fashion Gun.unity
+    guid: beab6df4ac9af2f45856cda7663bb131
+  - enabled: 1
+    path: Assets/Scenes/PickUpThePhone.unity
+    guid: 26b41045ebc3a5f45b61f55fd9528d11
+  - enabled: 1
+    path: Assets/Scenes/Bar simulator.unity
+    guid: b96e6df549b4fcc49a9810fb57950cbc
+  - enabled: 1
+    path: Assets/Scenes/Dance Match.unity
+    guid: 002b578bfa30700489eab4ba8744d571
+  - enabled: 1
+    path: Assets/Scenes/DatingSim.unity
+    guid: 3d1bd5388b018704c964308cb5d32019
+  - enabled: 1
+    path: Assets/Scenes/GetToTheDate.unity
+    guid: 7e3c517b17512414ba0a37eac0b9648b
+  - enabled: 1
+    path: Assets/Scenes/Pick Outfit.unity
+    guid: 217e98f0d72b4864dbcccd9a4a033ca7
+  - enabled: 1
+    path: Assets/Scenes/2dplatformerBane2.unity
+    guid: 636fa0bf081a0ac4b8dde3db1f89bb4a
+  - enabled: 1
+    path: Assets/Scenes/FallingGame.unity
+    guid: 99e77bf02d813704da8aa286ff89d438
+  - enabled: 1
+    path: Assets/Scenes/Stay in spotlight.unity
+    guid: 02e590bb12cb35241b362570a63fa397
   m_configObjects: {}
