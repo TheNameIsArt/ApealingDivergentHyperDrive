@@ -1093,6 +1093,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52a60e7be79b0f04f9d65079c38efc04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  highScoreText: {fileID: 0}
+  player: {fileID: 0}
+  scoreText: {fileID: 0}
+  playButton: {fileID: 0}
+  gameOver: {fileID: 0}
 --- !u!1001 &1878453990
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1340,6 +1345,10 @@ PrefabInstance:
     - target: {fileID: 1488229841249708875, guid: faa36ad41941e5047a8c4014548bd441, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3166849952035121477, guid: faa36ad41941e5047a8c4014548bd441, type: 3}
+      propertyPath: timer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7634346789007208659, guid: faa36ad41941e5047a8c4014548bd441, type: 3}
       propertyPath: m_Name

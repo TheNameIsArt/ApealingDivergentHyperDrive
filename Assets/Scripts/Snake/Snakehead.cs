@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 
 public class Snakehead : MonoBehaviour
@@ -16,6 +17,8 @@ public class Snakehead : MonoBehaviour
     
     public AppleManager appleManager;
     private SnakeSprite snakeSprite;
+    public TMP_Text appleText;
+    public int applesLeft = 5;
 
     private void Start()
     {
@@ -99,6 +102,12 @@ public class Snakehead : MonoBehaviour
                 eatParticles.Play();
 
                 PitchManager.instance.ChangePitch();
+                applesLeft = applesLeft - 1;
+                appleText.text = "Apples left: " + applesLeft;
+                if(applesLeft <= 0)
+                {
+                    SnakeGameManager.instance.Win();
+                }
             }          
         }
     }

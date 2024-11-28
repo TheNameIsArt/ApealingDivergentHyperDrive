@@ -27,7 +27,7 @@ public class AppleManager : MonoBehaviour
     public void SpawnApple()
     {
         score++;
-        HighscoreManager.instance.SaveHighscore(score);
+        //HighscoreManager.instance.SaveHighscore(score);
         text.text = score.ToString();
         Instantiate(apple, GetRandomPosition(), Quaternion.identity);
     }

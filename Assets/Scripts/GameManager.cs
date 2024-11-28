@@ -9,10 +9,12 @@ public class SnakeGameManager : MonoBehaviour
     public Snakebody snakeBody;
     public GameObject GameOverText;
     public static SnakeGameManager instance;
+    SceneRandomizer SceneRandomizer;
 
     private void Awake()
     {
-        instance = this; 
+        instance = this;
+        SceneRandomizer = GameObject.Find("DontDestroyOnLoad").GetComponent<SceneRandomizer>();
     }
 
     public void Died()
@@ -37,16 +39,12 @@ public class SnakeGameManager : MonoBehaviour
         }
 
         Time.timeScale = 0;
-        GameOverText.SetActive(true);
+        SceneRandomizer.gameOver();
     }
 
-    private void Update()
+    public void Win()
     {
-        if (Input.GetKeyDown(KeyCode.R) && GameOverText.activeSelf)
-        {
-            Time.timeScale = 1;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
+      SceneRandomizer.Win = true;
     }
 
 }
