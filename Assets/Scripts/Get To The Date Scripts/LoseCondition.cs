@@ -4,16 +4,6 @@ using UnityEngine;
 
 public class LoseCondition : MonoBehaviour
 {
-    private Animator animator;
-    public Rigidbody2D rb_1;
-    private SceneRandomizer SceneRandomizer;
-    void Awake()
-    {
-        rb_1 = GameObject.Find("Player").GetComponent<Rigidbody2D>();
-        animator = GameObject.Find("Player").GetComponent<Animator>();
-        SceneRandomizer = GameObject.Find("DontDestroyOnLoad").GetComponent<SceneRandomizer>();
-
-    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // Check if the player collided with the box
@@ -32,9 +22,6 @@ public class LoseCondition : MonoBehaviour
         Debug.Log("Game Over! You hit the box!");
 
         // Example: Stop the game or reload the level
-        rb_1.constraints = RigidbodyConstraints2D.FreezeAll;
-        animator.speed = 0f; // Pause the animation
-        SceneRandomizer.gameOver();
+        Time.timeScale = 0; // Pause the game
     }
-  
 }

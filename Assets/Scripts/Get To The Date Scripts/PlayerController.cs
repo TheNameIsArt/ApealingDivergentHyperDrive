@@ -15,34 +15,33 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>(); // Get the Rigidbody2D component attached to the player
-
     }
 
     void Update()
+{
+    // Automatically move the player to the right
+    rb.velocity = new Vector2(speed, rb.velocity.y);
+
+    // Debug: Check if the ground check position is detecting anything
+    Collider2D groundCollider = Physics2D.OverlapCircle(groundCheck.position, 1f, groundLayer);
+    if (groundCollider != null)
     {
-        // Automatically move the player to the right
-        rb.velocity = new Vector2(speed, rb.velocity.y);
+        Debug.Log("Ground detected at: " + groundCollider.gameObject.name);
+    }
+    else
+    {
+        Debug.Log("No ground detected");
+    }
 
-        // Check if the player is grounded using the groundCheck position
-        Collider2D groundCollider = Physics2D.OverlapCircle(groundCheck.position, 1f, groundLayer);
-        isGrounded = groundCollider != null;
+    // Check if spacebar is pressed and the player is grounded
+    if (isGrounded && Input.GetKeyDown(KeyCode.Space))
+    {
+        Debug.Log("Jumping!"); // Debug if spacebar input is detected
+        rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+    }
 
-        // Debug: Check if the ground check position is detecting anything
-        /*if (groundCollider != null)
-        {
-            Debug.Log("Ground detected at: " + groundCollider.gameObject.name);
-        }
-        else
-        {
-            Debug.Log("No ground detected");
-        }*/
-
-        // Check if spacebar is pressed and the player is grounded
-        if (isGrounded && Input.GetKeyDown(KeyCode.Space))
-        {
-            Debug.Log("Jumping!"); // Debug if spacebar input is detected
-            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-        }
+    // Check if the player is grounded using the groundCheck position
+    isGrounded = groundCollider != null;
     }
 
 
