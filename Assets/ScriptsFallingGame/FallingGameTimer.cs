@@ -5,12 +5,14 @@ using UnityEngine;
 
 public class FallingGameTimerScript : MonoBehaviour
 {
-    private float timer = 5;
+    public float timer = 5;
     private float totalTime = 0;
     public SceneRandomizer sceneRandomizer;
     public TMP_Text timerTxt;
     public bool timerStopper = false;
     private bool Winner;
+    bool isWinner = false;
+    bool sceneLoading = false;
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +32,13 @@ public class FallingGameTimerScript : MonoBehaviour
             }
             else
             {
-                Invoke("Win", 0.2f);
+                isWinner = true;
+                if(isWinner == true && !sceneLoading)
+                {
+                    sceneLoading = true;
+                    Invoke("Win", 0.2f);
+                }
+                
             }
             float roundedtime = (float)System.Math.Round(timer, 2);
             timerTxt.text = "Time left: " + roundedtime.ToString();
@@ -39,6 +47,7 @@ public class FallingGameTimerScript : MonoBehaviour
     }
     void Win()
     {
+        
         sceneRandomizer.Win = true; 
     }
 }

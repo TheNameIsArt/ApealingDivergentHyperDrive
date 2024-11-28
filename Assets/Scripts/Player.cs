@@ -80,7 +80,7 @@ spriteRenderer = GetComponent<SpriteRenderer>();
     {
         if (other.gameObject.tag == "Obstacles")
         {
-            FindAnyObjectByType<FlappyGameManager>().GameOver();
+            FindAnyObjectByType<FlappyManager>().GameOver();
         }
 
         else if (other.gameObject.tag == "Scoring")

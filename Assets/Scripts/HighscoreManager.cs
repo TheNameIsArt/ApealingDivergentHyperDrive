@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class HighscoreManager : MonoBehaviour
 {
@@ -22,7 +21,7 @@ public class HighscoreManager : MonoBehaviour
 
     public void SaveHighscore(int score)
     {
-        if (score > LoadHighscore())
+        if(score > LoadHighscore())
         {
             PlayerPrefs.SetInt("Highscore", score);
             PlayerPrefs.Save();

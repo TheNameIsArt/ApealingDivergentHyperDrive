@@ -1,57 +1,52 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
+using UnityEngine.SceneManagement;
 
-public class FlappyGameManager : MonoBehaviour
+public class SnakeGameManager : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI highScoreText;
-
-    public Player player;
-
-    public Text scoreText;
-
-    public GameObject playButton;
-
-    public GameObject gameOver;
-
-    private int score;
-
-    SceneRandomizer SceneRandomizer;
+    public Sprite DHeadUp, DHeadDown, DHeadLeft, DHeadRight;
+    public Snakebody snakeBody;
+    public GameObject GameOverText;
+    public static SnakeGameManager instance;
 
     private void Awake()
     {
-        SceneRandomizer = GameObject.Find("DontDestroyOnLoad").GetComponent<SceneRandomizer>();
-
-        Play();
+        instance = this; 
     }
 
-    public void Play()
+    public void Died()
     {
+        SpriteRenderer SR = snakeBody.GetComponent<SpriteRenderer>();
         
-
-        
-
-
-
-        player.enabled = true;
-
-        Pipes[] pipes = FindObjectsOfType<Pipes>();
-
-        for (int i = 0; i < pipes.Length; i++)
+        if(snakeBody.x == 1)
         {
-            Destroy(pipes[i].gameObject); 
+            SR.sprite = DHeadRight;
+        }
+        if(snakeBody.x == -1)
+        {
+            SR.sprite = DHeadLeft;
+        }
+        if (snakeBody.y == -1)
+        {
+            SR.sprite = DHeadDown;
+        }
+        if (snakeBody.y == 1)
+        {
+            SR.sprite = DHeadUp;
+        }
+
+        Time.timeScale = 0;
+        GameOverText.SetActive(true);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R) && GameOverText.activeSelf)
+        {
+            Time.timeScale = 1;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 
-    public void GameOver()
-    {
-        SceneRandomizer.gameSpeedFloat = 0f;
-        SceneRandomizer.gameOver();
-    }
-
-
-
-    
 }
