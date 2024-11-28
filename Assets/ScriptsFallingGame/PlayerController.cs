@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GTTDPlayerController : MonoBehaviour
+public class FallPlayerController : MonoBehaviour
 {
     public float moveSpeed = 5f;  // Speed of movement
 
