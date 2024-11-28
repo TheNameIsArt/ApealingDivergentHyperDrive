@@ -8,6 +8,7 @@ public class BossDamage : MonoBehaviour
     public bool Win = false;
     public int AttackDetect = 0;
 
+
     // Start is called before the first frame update
     void Start()
     {
