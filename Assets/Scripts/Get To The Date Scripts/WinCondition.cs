@@ -9,10 +9,14 @@ public class WinCondition : MonoBehaviour
     public AudioSource audioSource; // Reference to the AudioSource
     private float timesaver;
     private UniversalTimerScript timerScript;
+    
+    PlayerController playerController;
     private void Start()
     {
         SceneRandomizer = GameObject.Find("DontDestroyOnLoad").GetComponent<SceneRandomizer>();
         timerScript = GameObject.Find("Timer").GetComponent<UniversalTimerScript>();
+        playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -31,12 +35,12 @@ public class WinCondition : MonoBehaviour
     private void WinGame()
     {
         timerScript.timerStopper = true;
-        SceneRandomizer.gameSpeedFloat = 0; // Pause the game
+        
         Invoke("Win", 1f);
     }
     void Win()
     {
-        
+        playerController.speed = 0f;
         SceneRandomizer.Win = true;
     }
 }
