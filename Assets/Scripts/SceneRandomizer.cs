@@ -21,6 +21,8 @@ public class SceneRandomizer : MonoBehaviour
     private GameObject ui; // Reference to the child GameObject named "UI"
     private GameObject Timer;
     private UniversalTimerScript timerScript;
+    public GameObject specialtime;
+    private FallingGameTimerScript FallingGameTimerScript;
 
     private void Awake()
     {
@@ -30,7 +32,7 @@ public class SceneRandomizer : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        sceneNames = new string[] { "Alone at the Disco", "Catwalk simulation", "Fashion Gun", "PickUpThePhone", "Bar simulator", "Dance Match", "DatingSim", "GetToTheDate", "Pick Outfit", "2DPFB3", "FallingGame", "Stay in spotlight", "2DPFB4", "Hack & Slash", "Lawyer JRPG" };
+        sceneNames = new string[] { "Alone at the Disco", "Catwalk simulation", "Fashion Gun", "PickUpThePhone", "Bar simulator", "Dance Match", "DatingSim", "GetToTheDate", "Pick Outfit", "2DPFB3", "FallingGame", "Stay in spotlight", "2DPFB4", "Hack & Slash", "Lawyer JRPG", "CourtSim", "SnakeGame", "FlappyBird" };
         Instance = this;
         DontDestroyOnLoad(this);
         PointsToSpeedChange = PointsRequired;
@@ -50,13 +52,21 @@ public class SceneRandomizer : MonoBehaviour
             Debug.LogError("Child GameObject 'UI' not found!");
         }
 
+        if (specialtime != null)
+        {
+            specialtime.GetComponent<FallingGameTimerScript>();
+        }
+
     }
 
     private void Update()
     {
-        Time.timeScale = gameSpeedFloat;
-        gameSpeed.text = "Speed: " + System.Math.Round(Time.timeScale, 1);
-        // Check if the Win condition is true and we aren't already changing the scene
+        if (!timerScript.timerStopper)
+        {
+            Time.timeScale = gameSpeedFloat;
+            gameSpeed.text = "Speed: " + System.Math.Round(Time.timeScale, 1);
+        }
+            // Check if the Win condition is true and we aren't already changing the scene
         if (Win && !isChangingScene && !gameIsOver)
         {
             PointGet();
@@ -103,6 +113,8 @@ public class SceneRandomizer : MonoBehaviour
             gameIsOver = true;
             gameOverScreen.SetActive(true);
             timerScript.timerStopper = true;
+            
+            
             Debug.Log("Game Over man!");
 
         }
@@ -149,5 +161,9 @@ public class SceneRandomizer : MonoBehaviour
             timerScript.timerStopper = true;
         }
         
+    }
+    public void SpeedStopper()
+    {
+        Time.timeScale = 0f;
     }
 }

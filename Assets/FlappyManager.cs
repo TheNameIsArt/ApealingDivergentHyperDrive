@@ -10,21 +10,38 @@ public class FlappyManager : MonoBehaviour
 
     public Player player;
 
-    public Text scoreText;
+ 
 
-    public GameObject playButton;
-
-    public GameObject gameOver;
+    public GameObject Tutorial;
 
     private int score;
 
     SceneRandomizer SceneRandomizer;
+    FallingGameTimerScript timer;
 
     private void Awake()
     {
         SceneRandomizer = GameObject.Find("DontDestroyOnLoad").GetComponent<SceneRandomizer>();
+        timer = GameObject.Find("TimerUp").GetComponent<FallingGameTimerScript>();
+        SceneRandomizer.SpeedStopper();
+        
+        
+    }
+    public void Start()
+    {
+        timer.timerStopper = true;
+    }
+    private void Update()
+    {
+        if (timer.timerStopper)
+        {
+            SceneRandomizer.SpeedStopper();
+        }
 
-        Play();
+        if (timer.timerStopper && Input.GetKeyDown(KeyCode.Space))
+        {
+            Play();
+        }
     }
 
     public void Play()
@@ -32,10 +49,10 @@ public class FlappyManager : MonoBehaviour
 
 
 
+        Tutorial.SetActive(false);
+        timer.timerStopper = false;
 
-
-
-        player.enabled = true;
+        //player.enabled = true;
 
         Pipes[] pipes = FindObjectsOfType<Pipes>();
 

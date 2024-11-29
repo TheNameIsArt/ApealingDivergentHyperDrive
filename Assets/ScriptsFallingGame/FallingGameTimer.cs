@@ -24,8 +24,9 @@ public class FallingGameTimerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!timerStopper)
+        if (timerStopper == false)
         {
+            Time.timeScale = sceneRandomizer.gameSpeedFloat;
             if (timer > totalTime)
             {
                 timer = timer - Time.deltaTime;
@@ -43,6 +44,10 @@ public class FallingGameTimerScript : MonoBehaviour
             float roundedtime = (float)System.Math.Round(timer, 2);
             timerTxt.text = "Time left: " + roundedtime.ToString();
         }
+
+        
+            
+        
 
     }
     void Win()

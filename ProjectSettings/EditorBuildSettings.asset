@@ -6,11 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/FlappyBird.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: fb40911caa1cd5049960fa358b281c50
+  - enabled: 1
+    path: Assets/Scenes/FlappyBird.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/Alone at the disco.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
@@ -59,4 +59,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SnakeGame.unity
     guid: a96c6745a338a0b44836f22b83631371
+  - enabled: 1
+    path: Assets/Scenes/CourtSim.unity
+    guid: fdb467415b7bebf4a80d22587280620d
   m_configObjects: {}

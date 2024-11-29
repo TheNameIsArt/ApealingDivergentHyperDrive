@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class PickUpPhone : MonoBehaviour
+public class sPickUpPhone : MonoBehaviour
 {
     public TMP_Text resultText;       // Assign in the inspector
     public Button cueButton;          // Visual cue

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PhoneAnimation : MonoBehaviour
+public class sPhoneAnimation : MonoBehaviour
 {
    public Animator PhoneAnimator;
    private bool animationTriggered = false; 

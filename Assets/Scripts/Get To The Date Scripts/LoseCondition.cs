@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class LoseCondition : MonoBehaviour
 {
+    SceneRandomizer SceneRandomizer;
+    UniversalTimerScript timer;
+    private void Start()
+    {
+        SceneRandomizer = GameObject.Find("DontDestroyOnLoad").GetComponent<SceneRandomizer>();
+        timer = GameObject.Find("Timer").GetComponent<UniversalTimerScript>();
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // Check if the player collided with the box
@@ -22,6 +29,7 @@ public class LoseCondition : MonoBehaviour
         Debug.Log("Game Over! You hit the box!");
 
         // Example: Stop the game or reload the level
-        Time.timeScale = 0; // Pause the game
+        SceneRandomizer.gameSpeedFloat = 0;
+        SceneRandomizer.gameOver(); // Pause the game
     }
 }
