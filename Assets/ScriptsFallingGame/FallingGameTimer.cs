@@ -36,8 +36,9 @@ public class FallingGameTimerScript : MonoBehaviour
                 isWinner = true;
                 if(isWinner == true && !sceneLoading)
                 {
+                    
                     sceneLoading = true;
-                    Invoke("Win", 0.2f);
+                    Win();
                 }
                 
             }

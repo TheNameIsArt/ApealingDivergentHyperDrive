@@ -61,11 +61,11 @@ public class SceneRandomizer : MonoBehaviour
 
     private void Update()
     {
-        if (!timerScript.timerStopper)
-        {
+        
+        
             Time.timeScale = gameSpeedFloat;
             gameSpeed.text = "Speed: " + System.Math.Round(Time.timeScale, 1);
-        }
+       
             // Check if the Win condition is true and we aren't already changing the scene
         if (Win && !isChangingScene && !gameIsOver)
         {
