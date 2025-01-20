@@ -29,8 +29,8 @@ public class playerMovement : MonoBehaviour
             moveDirection = -1; // Left turn
             animator.Play("left", 0); // Force play LeftTurn animation
             currentSpeed = speed; // Assign forward speed
-            transform.Rotate(Vector3.forward, turnSpeed * Time.deltaTime);
-            transform.Translate(Vector3.down * currentSpeed * Time.deltaTime);
+            transform.Rotate(Vector3.forward, turnSpeed * Time.deltaTime); // Rotates the object around the forward axis.
+            transform.Translate(Vector3.down * currentSpeed * Time.deltaTime); // Moves the object downward based on its speed.
         }
         else if (Input.GetKey(KeyCode.D))
         {
